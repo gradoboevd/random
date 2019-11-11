@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="fonts/stylesheet.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>Розіграш призів від</h1>
+
+<div class="img"><img src="img/logo.svg"></div>
+
+<div class="rabbit"><img style="width:400px; height: 326px;" src="img/rabbit.png"></div>
+
+<div class="inputs">
+    <input type="text" placeholder="від" id="first" class="input" >
+    <input type="text" placeholder="до"  id="second" class="input" >
+</div>
+
+<div class="disp"><input disabled type="text" class="displayBtn" id="display"></div>
+
+<div class="btns">
+    <button onclick="foo()" class="button1">Згенерувати</button>
+    <button onclick="clearInputs()" class="button2" >Очистити</button>
+</div>
+
+
+
+
+<script>
+
+
+    function getRandomNumber() {
+
+        let lower = parseInt(document.getElementById('first').value);
+        let upper = parseInt(document.getElementById('second').value);
+
+
+
+        let randomNumber = Math.floor(Math.random() * (upper - lower + 1) + lower);
+        console.log(randomNumber);
+        return randomNumber;
+
+    }
+
+    function foo() {
+        let lower = parseInt(document.getElementById('first').value);
+        let upper = parseInt(document.getElementById('second').value);
+        if (lower > upper){
+            alert("Число зліва не може перевищувати число справа! Введіть, будь ласка, нові числа.");
+            //document.getElementById('display').value = "";
+            clearInputs();
+        } else if(lower === upper){
+
+            alert("Усі числа згенеровано!");
+            clearInputs();
+        } else{
+         document.getElementById('display').value = getRandomNumber();
+        }
+    }
+
+    function clearInputs(){
+        document.getElementById('first').value = "";
+        document.getElementById('second').value = "";
+        document.getElementById('display').value = "";
+    }
+
+
+    // if (lower > upper){
+    //     alert("Введите числа заново");
+    //     clearInputs();
+    // }
+
+    // if(typeof lower !== 'number' || typeof upper !== 'number'){
+    // alert("error");
+    // }
+    //
+    // if(lower === upper){
+    // return lower;
+    // }
+
+
+
+</script>
+
+
+
+</body>
+</html>
